@@ -23,13 +23,13 @@ SOFTWARE.
 */
 
 /* Constant values */
-var googleService = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=';
-var feedUrl = encodeURIComponent('http://www.mobilegeeks.de/feed/');
-var limit = 5;
-var version = '0.1';
+const googleServiceUrl = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=';
+const feedUrl = encodeURIComponent('http://www.mobilegeeks.de/feed/');
+const limit = 5;
+const version = '0.1';
 
 /* Generated values */
-var url = googleService + feedUrl;
+const url = googleServiceUrl + feedUrl;
 
 /* 
  * On document loaded, parse Feed.
