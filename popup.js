@@ -26,15 +26,23 @@ SOFTWARE.
 var googleService = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=';
 var feedUrl = encodeURIComponent('http://www.mobilegeeks.de/feed/');
 var limit = 5;
+var version = '0.1';
 
 /* Generated values */
 var url = googleService + feedUrl;
 
 /* 
  * On document loaded, parse Feed.
+ * - Set version number.
+ * - Parse feed.
 */
-$(document).ready(function() {
-        parseFeed();
+$(document).ready(function() 
+{
+	// E.g. Output: (v 0.1) 
+	$('#version').html('(v' + version + ')');
+	
+	// Parse the feed.
+	parseFeed();
 });
 
 /*
@@ -49,10 +57,12 @@ function parseFeed()
 			dataType: 'json',
 			success: function(data)
 			{
-				// data = http response
-				// responseData = feed + javascript methods
-				// feed = parsed feed (blog meta infos, entries, etc)
-				// entries = blog entries
+				/* Object structure:
+				 *	1. data = http response
+				 *	2. responseData = feed + javascript methods
+				 *	3. feed = parsed feed (blog meta infos, entries, etc)
+				 *	4. entries = blog entries
+				*/
 				formatJsonToHtmlDomElements(data.responseData.feed.entries);
 			}
 		}
@@ -63,9 +73,7 @@ function parseFeed()
  * Formats an entry object into a html dom element.
 */
 function formatJsonToHtmlDomElements(entries)
-{
-	log("formatJsonToHtmlDomElements() called");
-	
+{	
 	// Contains all generated elements.
 	var list = '';
 	
