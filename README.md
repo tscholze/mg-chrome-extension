@@ -9,7 +9,7 @@ It's a slow, but ongoing project which I use to play around with Chrome extensio
 ## How it looks
 The extensions look like...
 
-<img src="docu-images/v01-130114.png />
+![Screenshot](https://raw.github.com/tscholze/mg-chrome-extension/master/docu-images/v01-130114.png)
 
 ## How to install
 Open Chrome, go to `chrome://extensions/` and enable the 'Developer mode'. Afterwards, click on `Load unpacked extension`. Choose the cloned folder and import it. Done.
