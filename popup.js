@@ -86,9 +86,13 @@ function formatJsonToHtmlDomElements(entries)
 		// Open tag.
 		var element = '<li>';
 		
-		// Title with link.
-		var title = '<a href="'+entry.link+'" target="_blank">'+ trim(entry.title, 75, " ...")+'</a>';
-		element = element.concat(title);
+		// Build title
+		var date =  new Date(entry.publishedDate).toLocaleString();		
+		var title = entry.author + ' - '+ date;
+		
+		// Link.
+		var link = '<a href="'+ entry.link +'" target="_blank" title="'+title+'">'+ trim(entry.title, 75, " ...")+'</a>';
+		element = element.concat(link);
 		
 		// Closing tag.
 		element = element.concat('</li>');
