@@ -26,7 +26,7 @@ SOFTWARE.
 const googleServiceUrl = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=';
 const feedUrl = encodeURIComponent('http://www.mobilegeeks.de/feed/');
 const limit = 5;
-const version = '0.1';
+const version = '0.2';
 
 /* Generated values */
 const url = googleServiceUrl + feedUrl;
