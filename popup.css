@@ -8,31 +8,59 @@ body
 	min-width: 475px;
 	min-height: 200px;
 	
-	font-family: Helvetica, sans-serif;
-	font-size: 0.8em;
+	font-family: 'Exo 2', sans-serif;
+	font-size: 0.75em;
 	
 	margin: 5px;
 	padding-top: 15px;
+	
+	/*background-image: url(http://forum.mobilegeeks.de/images/Breeze/misc/logo.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	background-size: 165px;*/
+}
+
+#block
+{
+	margin-left: 1em;
+	margin-top: -1em;
+	position: relative;
+	width: 0.3em;
+	height: 4em;
+	background-color: #53565E;
 }
 
 header
 {
-	font-size: 1.25em;
+	margin-top: -2em;
+	font-size: 1.45em;
 	font-weight: bold;
-	
+	margin-left: 20px;
+	color: #53565E;
+}
+
+#ge
+{
 	color: #E6782D;
 }
 
+#hov:hover #block
+{
+	background-color: #E6782D;
+}	
+	
+
 footer
 {
-	font-size: 0.5em;
+	font-size: 0.6em;
 	color: #c0c0c0;
 	text-align: center;	
-	padding-top: 10px;
+	margin-top: -7px;
 }
 
 ul
 {
+	padding-top: 5px;
 	padding-left: 5px;
 }
 
@@ -45,7 +73,7 @@ ul li
 
 ul li:hover
 {
-	background: rgba(227, 120, 45, 0.1);
+	background: #FFB211;
 }
 
 a
