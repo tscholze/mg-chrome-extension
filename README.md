@@ -5,7 +5,7 @@ MobileGeeks Chrome Extension
 Just a simple, fan-made and basic Google Chrome extension to get the latest news of [ mobilegeeks.de][mg-link]. It's a slow, but ongoing project which I use to play around with Chrome extensions and / or Javascript.
 
 ## How it looks
-The extensions look like...
+The extension looks like:
 
 ![Screenshot](https://raw.github.com/tscholze/mg-chrome-extension/master/doc/v02.png)
 
