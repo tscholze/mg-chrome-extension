@@ -1,6 +1,6 @@
 {
 	"name": "MobileGeeks Top 5",
-	"version": "0.1",
+	"version": "0.2",
 	"manifest_version": 2,
 	"description": "Presents you the latest five article of mobilegeeks.de",
 	"homepage_url": "http://www.mobilegeeks.de",
