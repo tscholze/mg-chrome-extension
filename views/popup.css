@@ -21,17 +21,27 @@ body
 	margin-top: -1em;
 	position: relative;
 	width: 0.3em;
-	height: 4em;
+	height: 2em;
 	background-color: #53565E;
 }
 
 header
 {
-	margin-top: -2em;
+	margin-top: -1.25em;
 	font-size: 1.45em;
 	font-weight: bold;
 	margin-left: 20px;
 	color: #53565E;
+}
+
+header a
+{
+	color: inherit;
+}
+
+header a
+{
+	color: #E6782D;
 }
 
 #ge
@@ -85,4 +95,14 @@ footer span
 footer span:last-child
 {
 	padding-right: 0px;
+}
+
+.hidden
+{
+	display: none;
+}
+
+.nonactive-nav
+{
+	color: #f0ae81;
 }

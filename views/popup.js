@@ -24,12 +24,10 @@ SOFTWARE.
 
 /* Constant values */
 const googleServiceUrl = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=';
-const feedUrl = encodeURIComponent('http://www.mobilegeeks.de/feed/');
+const feedUrl = googleServiceUrl + encodeURIComponent('http://www.mobilegeeks.de/feed/');
+const forumUrl = googleServiceUrl + encodeURIComponent('http://forum.mobilegeeks.de/external.php?type=RSS2');
 const limit = 5;
 const version = '0.2';
-
-/* Generated values */
-const url = googleServiceUrl + feedUrl;
 
 /* 
  * On document loaded, parse Feed.
@@ -38,18 +36,50 @@ const url = googleServiceUrl + feedUrl;
 */
 $(document).ready(function() 
 {
+	document.getElementById("label-feed").addEventListener("click", onFeedNavClick); 
+	document.getElementById("label-forum").addEventListener("click", onForumNavClick); 
 	// E.g. Output: (v 0.1) 
 	$('#version').html('(v' + version + ')');
 	
 	// Parse the feed.
-	parseFeed();
+	parseFeed(feedUrl, true);
+	parseFeed(forumUrl, false);
 });
+
+/**
+ * Raised on "Lates: News" click.
+*/
+function onFeedNavClick(e)
+{
+	if ($("#forum-entries").hasClass("hidden")) return;
+	toggleContentViewVisibilities();
+}
+
+/**
+ * Raised on "Lates: Community" click.
+*/
+function onForumNavClick(e)
+{
+	if ($("#feed-entries").hasClass("hidden")) return;
+	toggleContentViewVisibilities();
+}
+
+/**
+ * Just a helper to toggle some css classes.
+*/
+function toggleContentViewVisibilities()
+{
+	$("#feed-entries").toggleClass("hidden");
+	$("#label-feed").toggleClass("nonactive-nav");
+	$("#forum-entries").toggleClass("hidden");	
+	$("#label-forum").toggleClass("nonactive-nav");
+}
 
 /*
  * Parses the feed and returns a callback to
  * format output as html dom elements.
 */
-function parseFeed()
+function parseFeed(url, isFeed)
 {	
 	$.ajax(
 		{
@@ -63,7 +93,7 @@ function parseFeed()
 				 *	3. feed = parsed feed (blog meta infos, entries, etc)
 				 *	4. entries = blog entries
 				*/
-				formatJsonToHtmlDomElements(data.responseData.feed.entries);
+				return formatJsonToHtmlDomElements(data.responseData.feed.entries, isFeed);
 			}
 		}
 	);
@@ -71,8 +101,10 @@ function parseFeed()
 
 /*
  * Formats an entry object into a html dom element.
+ * entries = json object list.
+ * isFeed = true if it is the feed, false of not.
 */
-function formatJsonToHtmlDomElements(entries)
+function formatJsonToHtmlDomElements(entries, isFeed)
 {	
 	// Contains all generated elements.
 	var list = '';
@@ -101,8 +133,16 @@ function formatJsonToHtmlDomElements(entries)
 		list = list.concat(element);
 	});
 	
-	// Append to existing html dom.
-	$('#entries').append(list);
+	// Append to existing html dom.	
+	if (isFeed)
+	{
+		$('#feed-entries').append(list);
+	}
+	else
+	{
+		$('#forum-entries').append(list);
+	}
+	
 }
 
 /**
