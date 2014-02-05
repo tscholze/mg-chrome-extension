@@ -1,8 +1,8 @@
 {
 	"name": "MobileGeeks News Feed",
-	"version": "0.2",
+	"version": "0.3",
 	"manifest_version": 2,
-	"description": "Presents you the latest five article of mobilegeeks.de",
+	"description": "Presents you the latest five article or communty posts of mobilegeeks.de",
 	"homepage_url": "http://www.mobilegeeks.de",
 	"browser_action":
 	{

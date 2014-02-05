@@ -27,7 +27,7 @@ const googleServiceUrl = 'https://ajax.googleapis.com/ajax/services/feed/load?v=
 const feedUrl = googleServiceUrl + encodeURIComponent('http://www.mobilegeeks.de/feed/');
 const forumUrl = googleServiceUrl + encodeURIComponent('http://forum.mobilegeeks.de/external.php?type=RSS2');
 const limit = 5;
-const version = '0.2';
+const version = '0.3';
 
 /* 
  * On document loaded, parse Feed.

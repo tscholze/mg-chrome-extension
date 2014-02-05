@@ -7,7 +7,7 @@ Just a simple, fan-made and basic Google Chrome extension to get the latest news
 ## How it looks
 The extension looks like:
 
-![Screenshot](https://raw.github.com/tscholze/mg-chrome-extension/master/doc/v02.png)
+![Screenshot](https://raw.github.com/tscholze/mg-chrome-extension/master/doc/v03.png)
 
 ## How to install
 Open Chrome, go to `chrome://extensions/` and enable the 'Developer mode'. Afterwards, click on `Load unpacked extension`. Choose the cloned folder and import it. Done. I won't provide a Chrome App Store version of this extension.
