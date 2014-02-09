@@ -24,8 +24,8 @@ SOFTWARE.
 
 /* Constant values */
 const googleServiceUrl = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=';
-const feedUrl = googleServiceUrl + encodeURIComponent('http://www.mobilegeeks.de/feed/');
-const forumUrl = googleServiceUrl + encodeURIComponent('http://forum.mobilegeeks.de/external.php?type=RSS2');
+const feedUrl = 'http://www.mobilegeeks.de/feed/';
+const forumUrl = 'http://forum.mobilegeeks.de/external.php?type=RSS2';
 const limit = 5;
 const version = '0.3';
 
@@ -36,10 +36,16 @@ const version = '0.3';
 */
 $(document).ready(function() 
 {
+	// Attach event handler to view fields.
 	document.getElementById("label-feed").addEventListener("click", onFeedNavClick); 
 	document.getElementById("label-forum").addEventListener("click", onForumNavClick); 
-	// E.g. Output: (v 0.1) 
+	document.getElementById("setting-link").addEventListener("click", onSettingNavClick); 
+	document.getElementById("setting-save-button").addEventListener("click", onSaveSettingButtonClick); 
+	
+	// E.g. Output: (v 0.1).
 	$('#version').html('(v' + version + ')');
+	
+	setSettingViewValues();
 	
 	// Parse the feed.
 	parseFeed(feedUrl, true);
@@ -52,7 +58,7 @@ $(document).ready(function()
 function onFeedNavClick(e)
 {
 	if ($("#forum-entries").hasClass("hidden")) return;
-	toggleContentViewVisibilities();
+	toggleFeedViewsVisibilities();
 }
 
 /**
@@ -61,13 +67,51 @@ function onFeedNavClick(e)
 function onForumNavClick(e)
 {
 	if ($("#feed-entries").hasClass("hidden")) return;
-	toggleContentViewVisibilities();
+	toggleFeedViewsVisibilities();
 }
 
 /**
- * Just a helper to toggle some css classes.
+ * Raised on "Settings" click.
 */
-function toggleContentViewVisibilities()
+function onSettingNavClick(e)
+{
+	if ($("#list-view").hasClass("hidden")) return;
+	toggleContentViewsVisibilities();
+}
+
+/**
+ * Raised on settings view save button click.
+*/
+function onSaveSettingButtonClick(e)
+{
+	toggleContentViewsVisibilities();
+}
+
+/**
+ * Sets default values to the settings view
+*/
+function setSettingViewValues()
+{
+	$("#itemsCount").val(limit);
+	$("#linkBlog").val(feedUrl);
+	$("#linkForum").val(forumUrl);
+}
+
+/**
+ * Just a helper to toggle some view (feed, setting) 
+ * visibilities.
+*/
+function toggleContentViewsVisibilities()
+{
+	$("#list-view").toggleClass("hidden");
+	$("#setting-view").toggleClass("hidden");
+}
+
+/**
+ * Just a helper to toggle some feed (blog, forum) 
+ * visibilities.
+*/
+function toggleFeedViewsVisibilities()
 {
 	$("#feed-entries").toggleClass("hidden");
 	$("#label-feed").toggleClass("nonactive-nav");
@@ -83,7 +127,7 @@ function parseFeed(url, isFeed)
 {	
 	$.ajax(
 		{
-			url: url,
+			url: googleServiceUrl + encodeURIComponent(url),
 			dataType: 'json',
 			success: function(data)
 			{

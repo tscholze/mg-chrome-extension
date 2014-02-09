@@ -9,22 +9,38 @@
 	
 	<!-- Styles -->
 	<link href="popup.css" rel="stylesheet" />
-	<link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css' />
 </head>
 
 <body>
 	<!-- Header -->
 	<div id="hov">
-	<div id="block" /></div>
+		<div id="block" />
+	</div>
+	
 	<header>
-		Mobile<span id="ge">Geeks</span>: Latest <a href="#" id="label-feed">News</a> or <a href="#" id="label-forum" class="nonactive-nav">Community entries</a> 
+		Mobile<span id="ge">Geeks</span>: Latest <a href="#" id="label-feed">News</a> or 
+		<a href="#" id="label-forum" class="nonactive-nav">Community entries</a> 
 	</header>
 	</div>
 	
-	<!-- List -->
-	<ul id="feed-entries"></ul>
+	<!-- Lists -->
+	<div id="list-view">
+		<ul id="feed-entries"></ul>	
+		<ul id="forum-entries" class="hidden"></ul>
+	</div>
 	
-	<ul id="forum-entries" class="hidden"></ul>
+	<!-- Settings -->
+	<div id="setting-view" class="hidden">
+		<form>
+			<label for="itemsCount">Items count:</label><input type="text" id="itemsCount" readonly>
+			<label for="linkBlog">Feed blog link:</label><input type="text" id="linkBlog" readonly>
+			<label for="linkForum">Feed forum link:</label><input type="text" id="linkForum" readonly>
+			<button id="setting-save-button">save</button>
+		</form>
+	</div>
+	
+	<div class="clear"></div>
 	
 	<!-- Footer -->
 	<footer>
@@ -34,6 +50,10 @@
 		
 		<span id="gh-link">
 			Fork me at <a href="https://github.com/tscholze/mg-chrome-extension" target="_blank">Github.com</a>
+		</span>
+		
+		<span>
+			<a href="#" id="setting-link">Settings</a>
 		</span>
 		
 		<span id="version"></ul>
